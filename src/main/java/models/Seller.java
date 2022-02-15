@@ -1,6 +1,7 @@
 package models;
 
 public class Seller  extends Buyer{
+    private int id;
     private String price;
     private String Location;
     private  String paymentmodels;
@@ -34,5 +35,13 @@ public class Seller  extends Buyer{
 
     public void setPaymentmodels(String paymentmodels) {
         this.paymentmodels = paymentmodels;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

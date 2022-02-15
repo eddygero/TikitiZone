@@ -1,9 +1,10 @@
 package models;
 
 public class Buyer {
-    String name;
-    String  age;
-    String ticket;
+    private int id;
+   private String name;
+   private String  age;
+   private String ticket;
 
     public Buyer(String name, String age, String ticket) {
         this.name = name;
@@ -33,5 +34,13 @@ public class Buyer {
 
     public void setTicket(String ticket) {
         this.ticket = ticket;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
