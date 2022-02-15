@@ -2,16 +2,19 @@ package models;
 
 import org.sql2o.Connection;
 
-public class Seller extends  Buyer{
+public class Seller extends Buyer {
     private String price;
     private String location;
-    private  String paymentModels;
+    private String paymentModels;
+    public static final String Person2 = "seller";
 
-    public Seller(String name, String age, String ticket, String price, String location, String paymentmodels) {
-        super(name, age, ticket);
+
+    public Seller(String name, String age, String ticket, String type, String price, String location, String paymentModels) {
+        super(name, age, ticket, type);
         this.price = price;
-       this. location = location;
-        this.paymentModels = paymentmodels;
+        this.location = location;
+        this.paymentModels = paymentModels;
+        this.type= Person2;
     }
 
     public String getPrice() {
@@ -27,7 +30,7 @@ public class Seller extends  Buyer{
     }
 
     public void setLocation(String location) {
-       this. location = location;
+        this.location = location;
     }
 
     public String getPaymentmodels() {
@@ -40,17 +43,17 @@ public class Seller extends  Buyer{
 
     @Override
     public void save() {
-        if (this.price .equals(null)||this.location.equals(null)||this.paymentModels.equals(null)){
+        if (this.price.equals(null) || this.location.equals(null) || this.paymentModels.equals(null)) {
             throw new IllegalArgumentException("Fields are required");
         }
-        try(Connection conn = DB.sql2o.open()){
+        try (Connection conn = DB.sql2o.open()) {
             String sql = "INSERT INTO buyer(name,age,ticket,price,location)VALUES(:name ,:age,:ticket,:price,:location)";
-            this.id =(int) conn.createQuery(sql,true)
-                    .addParameter("name",this.name)
-                    .addParameter("age",this.age)
-                    .addParameter("ticket",this.ticket)
-                    .addParameter("price",this.price)
-                    .addParameter("location",this.location)
+            this.id = (int) conn.createQuery(sql, true)
+                    .addParameter("name", this.name)
+                    .addParameter("age", this.age)
+                    .addParameter("ticket", this.ticket)
+                    .addParameter("price", this.price)
+                    .addParameter("location", this.location)
                     .executeUpdate()
                     .getKey();
         }
