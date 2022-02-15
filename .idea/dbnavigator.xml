@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DataExportManager">
@@ -43,9 +43,6 @@
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
   </component>
-  <component name="DBNavigator.Project.FileConnectionMappingManager">
-    <mapping file-url="file://$APPLICATION_CONFIG_DIR$/consoles/db/afd175cc-256b-4616-ae5f-a8f9c65ef29a/console.sql" connection-id="virtual-postgres-connection" session-id="MAIN" current-schema="" />
-  </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />
     <execution-history>
@@ -85,7 +82,7 @@
           <database value="tikitizone" />
           <type value="USER_PASSWORD" />
           <user value="postgres" />
-          <deprecated-pwd value="ZWR3YXJkZ2VybzMz" />
+          <deprecated-pwd value="" />
         </database>
         <properties>
           <auto-commit value="false" />
