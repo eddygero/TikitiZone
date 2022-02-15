@@ -1,0 +1,42 @@
+*{
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+font-family: 'Comfortaa', cursive;
+
+}
+body{
+ background-color: #D4CBE6;
+}
+.login-container{
+ width: 100vw;
+ height: 100vh;
+ justify-content: center;
+ align-items: center;
+}
+
+.form-container{
+ background-color: #fff;
+ transform: translateX(-12px);
+}
+fieldset{
+ display: flex;
+ flex-direction: column;
+ padding-left: 3px;
+}
+.first-fieldset{
+ margin-top: 80px;
+}
+.first-fieldset-signUp{
+ margin-top: 0px;
+}
+input{
+ border:2px solid #7737F7;
+ border-radius: 10px;
+ padding: 4px;
+}
+.btn{
+ background-color: #7737f7;
+ color: #fff;
+ border-radius: 10px;
+}
