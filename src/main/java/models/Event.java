@@ -5,6 +5,7 @@ import org.sql2o.Connection;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 public class Event {
     private  int id;
@@ -119,5 +120,25 @@ public class Event {
                     .executeUpdate()
                     .getKey();
         }
+        }
+    public static List<Event> all() {
+        try(Connection conn = DB.sql2o.open()){
+            String sql ="SELECT * FROM evens";
+            return conn.createQuery(sql)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Event.class);
+        }
     }
+    public static Event find(int id){
+        try (Connection con=DB.sql2o.open()){
+            String sql= "SELECT * FROM events WHERE id=:id";
+            Event event=  con.createQuery(sql)
+                    .addParameter("id",id)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetchFirst(Event.class);
+            return event;
+        }
+    }
+
 }
+
