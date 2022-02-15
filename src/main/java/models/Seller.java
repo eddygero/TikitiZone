@@ -1,6 +1,8 @@
 package models;
 
-public class Seller  extends Buyer{
+import org.sql2o.Connection;
+
+public class Seller extends  Buyer{
     private String price;
     private String Location;
     private  String paymentModels;
@@ -35,4 +37,22 @@ public class Seller  extends Buyer{
     public void setPaymentmodels(String paymentModels) {
         this.paymentModels = paymentModels;
     }
+
+    @Override
+    public void save() {
+        if (this.price .equals(null)||this.Location.equals(null)||this.paymentModels.equals(null)){
+            throw new IllegalArgumentException("Fields are required");
+        }
+        try(Connection conn = DB.sql2o.open()){
+            String sql = "INSERT INTO buyer(name,age,ticket,price,location)VALUES(:name ,:age,:ticket,:price,:location)";
+            this.id =(int) conn.createQuery(sql,true)
+                    .addParameter("name",this)
+                    .addParameter("age",this.age)
+                    .addParameter("ticket",this.ticket)
+                    .executeUpdate()
+                    .getKey();
+        }
+    }
+
+
 }
