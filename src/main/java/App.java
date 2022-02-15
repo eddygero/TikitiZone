@@ -17,5 +17,17 @@ public class App {
             return  new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
+        //login Route
+        get("/login", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            return  new ModelAndView(model, "login.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //signup Route
+        get("/signup", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            return  new ModelAndView(model, "signup.hbs");
+        }, new HandlebarsTemplateEngine());
+
     }
 }
