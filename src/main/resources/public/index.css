@@ -1,3 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap");
+
 * {
-font-family: 'Comfortaa', cursive;
+  font-family: "Comfortaa", cursive;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+header {
+  height: 90%;
+  position: relative;
+
+}
+
+#nav {
+  width: 95%;
+  margin: auto;
+  margin-top: 16px;
+}
+#btn-section .nav-link {
+  text-decoration: none;
+  color: black;
+}
+.nav-link:hover {
+  color: #7737f7;
+}
+
+.btn {
+  width: 200px;
+  height: 55px;
+  border-radius: 10px;
+  outline: none;
+  color: #fff;
+  background-color: #7737f7;
+  border: none;
+  box-shadow: #64646f33 0 7px 29px;
+}
+
+/* Banner Section */
+.banner {
+  width: 95%;
+  margin: auto;
+  height: 80%;
+  border-radius: 20px;
+  background-image: url(https://images.unsplash.com/photo-1594623930572-300a3011d9ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+/* Search Section */
+.search-section {
+    position: absolute;
+    width: 70%;
+    bottom: 100px;
+    right: 300px;
+    height: 150px;
+    margin: auto;
+    background-color: #0C0035;
+    color: #fff;
+    border-radius: 20px;
+
+}
+.date-icon img , .location-icon img, .event-icon img {
+    margin-right: 16px;
+
+}
+.line {
+    width: 300px;
+    background-color: #0C0035;
+    border: none;
+    color: #fff;
+    outline: none;
+    border-bottom: 3px #7737f7 solid;
+}
+
+
+/* Upcoming Events */
+.upcoming {
+  width: 95%;
+  margin: auto;
+}
+.section-title h5{
+  font-size: 32px;
 }
