@@ -2,17 +2,14 @@
 padding: 0;
 margin: 0;
 box-sizing: border-box;
-font-family: 'Comfortaa', cursive;
+}
 
-}
-body{
- background-color: #D4CBE6;
-}
 .login-container{
  width: 100vw;
  height: 100vh;
  justify-content: center;
  align-items: center;
+ background-color: #D4CBE6;
 }
 
 .form-container{
@@ -36,7 +33,7 @@ input{
  padding: 4px;
 }
 .btn{
- background-color: #7737f7;
+ background-color: #7737F7;
  color: #fff;
  border-radius: 10px;
 }
