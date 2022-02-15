@@ -20,7 +20,7 @@ public class Event {
     private String description;
 
     public Event(int buyer_id,  String title, String location, int price, String host, String imageUrl, String description) {
-        Buyer_id = buyer_id;
+        this.Buyer_id = buyer_id;
         this.title = title;
         this.location = location;
         this.eventTime = new Timestamp(date.getTime());;
