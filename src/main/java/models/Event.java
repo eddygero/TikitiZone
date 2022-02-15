@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class Event {
     private  int id;
+    private int Buyer_id;
     private String title;
     private String location;
     private Date date = new Date();
@@ -15,18 +16,15 @@ public class Event {
     private String ImageUrl;
     private String description;
 
-    public Event(String title, String location,  int price, String host, String imageUrl, String description) {
+    public Event(int buyer_id,  String title, String location, int price, String host, String imageUrl, String description) {
+        Buyer_id = buyer_id;
         this.title = title;
         this.location = location;
-        this.eventTime = new Timestamp(date.getTime());
+        this.eventTime = new Timestamp(date.getTime());;
         this.price = price;
         this.host = host;
         ImageUrl = imageUrl;
         this.description = description;
-    }
-
-    public String getTitle() {
-        return title;
     }
 
     public int getId() {
@@ -35,6 +33,19 @@ public class Event {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getBuyer_id() {
+        return Buyer_id;
+    }
+
+    public void setBuyer_id(int buyer_id) {
+        Buyer_id = buyer_id;
+    }
+
+
+    public String getTitle() {
+        return title;
     }
 
     public void setTitle(String title) {
@@ -47,14 +58,6 @@ public class Event {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public Timestamp getEventTime() {

@@ -1,16 +1,15 @@
 package models;
 
 public class Seller  extends Buyer{
-    private int id;
     private String price;
     private String Location;
-    private  String paymentmodels;
+    private  String paymentModels;
 
     public Seller(String name, String age, String ticket, String price, String location, String paymentmodels) {
         super(name, age, ticket);
         this.price = price;
         Location = location;
-        this.paymentmodels = paymentmodels;
+        this.paymentModels = paymentmodels;
     }
 
     public String getPrice() {
@@ -30,18 +29,10 @@ public class Seller  extends Buyer{
     }
 
     public String getPaymentmodels() {
-        return paymentmodels;
+        return paymentModels;
     }
 
-    public void setPaymentmodels(String paymentmodels) {
-        this.paymentmodels = paymentmodels;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setPaymentmodels(String paymentModels) {
+        this.paymentModels = paymentModels;
     }
 }
