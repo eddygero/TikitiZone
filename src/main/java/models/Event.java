@@ -139,6 +139,22 @@ public class Event {
             return event;
         }
     }
+    public void delete(){
+        try (Connection con=DB.sql2o.open()){
+            String sql="DELETE FROM events WHERE id=:id";
+            con.createQuery(sql)
+                    .addParameter("id",this.id)
+                    .executeUpdate();
+        }
+
+    }
+    public static void deleteAll(){
+        try (Connection con=DB.sql2o.open()){
+            String sql="DELETE FROM events";
+            con.createQuery(sql)
+                    .executeUpdate();
+        }
+    }
 
 }
 
