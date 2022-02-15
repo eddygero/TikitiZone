@@ -1,6 +1,8 @@
 package models;
 
 
+import org.sql2o.Connection;
+
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -23,7 +25,7 @@ public class Event {
         this.eventTime = new Timestamp(date.getTime());;
         this.price = price;
         this.host = host;
-        ImageUrl = imageUrl;
+       this. ImageUrl = imageUrl;
         this.description = description;
     }
 
@@ -98,5 +100,24 @@ public class Event {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    public void save() {
+        if (this.title.equals(null)||this.location.equals(null)||(this.host.equals(null)||this.ImageUrl.equals(null))){
+            throw new IllegalArgumentException("Fields are required");
+        }
+        try(Connection conn = DB.sql2o.open()){
+            String sql = "INSERT INTO events (title,location,price,host,imageUrl,description,Buyer_id,eventTime)VALUES(:title,:location,:price,:host,:imageUrl,:description, :Buyer_id,:eventTime)";
+            this.id =(int) conn.createQuery(sql,true)
+                    .addParameter("title",this.title)
+                    .addParameter("location",this.location)
+                    .addParameter("price",this.price)
+                    .addParameter("host",this.host)
+                    .addParameter("imageUrl",this.ImageUrl)
+                    .addParameter("description",this.description)
+                    .addParameter("Buyer_id",this.Buyer_id)
+                    .addParameter("eventTime",this.eventTime)
+                    .executeUpdate()
+                    .getKey();
+        }
     }
 }
