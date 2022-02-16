@@ -1,5 +1,6 @@
-package models;
-
+import models.Buyer;
+import models.Event;
+import models.Seller;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
