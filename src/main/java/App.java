@@ -19,16 +19,6 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
-<<<<<<< HEAD
-=======
-
-//route for my Events Page
-        get("/myEvents", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "myEvents.hbs");
-        }, new HandlebarsTemplateEngine());
-
->>>>>>> 5ae6415ddc8d6dba6d9b7839acbef5461bb20a0e
 //route for getting the form
         get("", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
