@@ -123,7 +123,7 @@ public class Event {
         }
     public static List<Event> all() {
         try(Connection conn = DB.sql2o.open()){
-            String sql ="SELECT * FROM evens";
+            String sql ="SELECT * FROM events";
             return conn.createQuery(sql)
                     .throwOnMappingFailure(false)
                     .executeAndFetch(Event.class);

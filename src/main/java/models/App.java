@@ -62,7 +62,7 @@ public class App {
             Event event = new Event( Buyer_id,title,location,price,host,imageUrl,description);
             event.save();
             response.redirect("/view/events");
-            return new ModelAndView(model, "sighting-form.hbs");
+            return new ModelAndView(model, "eventForm.hbs");
         }, new HandlebarsTemplateEngine());
 //route for displaying the events
         get("/view/Events", (request, response) -> {
