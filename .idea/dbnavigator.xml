@@ -46,6 +46,11 @@
   <component name="DBNavigator.Project.FileConnectionMappingManager">
     <mapping file-url="file://$PROJECT_DIR$/create.sql" connection-id="virtual-iso92-sql-connection" session-id="MAIN" current-schema="" />
   </component>
+  <component name="DBNavigator.Project.FileConnectionMappingManager">
+    <mapping file-url="file://$APPLICATION_CONFIG_DIR$/consoles/db/afd175cc-256b-4616-ae5f-a8f9c65ef29a/console.sql" connection-id="virtual-postgres-connection" session-id="MAIN" current-schema="" />
+    <mapping file-url="file://$PROJECT_DIR$/create.sql" connection-id="virtual-postgres-connection" session-id="MAIN" current-schema="" />
+  </component>
+
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />
     <execution-history>
