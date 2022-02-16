@@ -12,10 +12,11 @@ import static spark.Spark.*;
 
 public class App {
     public static void main(String[] args) {
+        staticFileLocation("/public");
 //route for the homepage
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "welcome.hbs");
+            return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 //route for getting the form
         get("", (request, response) -> {
@@ -36,12 +37,13 @@ public class App {
             if (type.equals(Seller.Person2)){
                 Seller seller = new Seller(name, age,ticket,type,location,price,paymentModel);
                 seller.save();
+
             }else{
                 Buyer buyer = new Buyer(name, age, ticket,type);
                 buyer.save();
             }
             response.redirect("");
-            return new ModelAndView(model, "buyerform.hbs");
+            return new ModelAndView(model, "signup.hbs");
         }, new HandlebarsTemplateEngine());
 //route for viewing the  buyers
         get("", (request, response) -> {
