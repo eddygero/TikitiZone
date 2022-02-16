@@ -11,6 +11,9 @@ box-sizing: border-box;
  align-items: center;
  background-color: #D4CBE6;
 }
+.login-sub-container{
+ width: 75%;
+ }
 
 .form-container{
  background-color: #fff;

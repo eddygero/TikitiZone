@@ -14,15 +14,16 @@ import static spark.Spark.*;
 public class App {
     public static void main(String[] args) {
         staticFileLocation("/public");
+
 //route for the homepage
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 //route for getting the form
-        get("", (request, response) -> {
+        get("/create/buyer/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "buyer-form.hbs");
+            return new ModelAndView(model, "signup.hbs");
         }, new HandlebarsTemplateEngine());
         //creates a buyer
         post("/create/Buyer", (request, response) -> {
@@ -30,13 +31,18 @@ public class App {
             String type =request.queryParams("type");
             String name = request.queryParams("name");
             String age = request.queryParams("age");
-            String location =request.queryParams("location");
             String ticket = request.queryParams("ticket");
+            String location = request.queryParams("location");
             String price = request.queryParams("price");
-            String paymentModel = request.queryParams("paymentModel");
-
+            String paymentModels = request.queryParams("paymentModels");
+            model.put("name",name);
+            model.put("age",age);
+            model.put("ticket",ticket);
+            model.put("location",location);
+            model.put("price",price);
+            model.put("paymentModels",paymentModels);
             if (type.equals(Seller.Person2)){
-                Seller seller = new Seller(name, age,ticket,type,location,price,paymentModel);
+                Seller seller = new Seller(name, age,ticket,Seller.Person2,location,price,paymentModels);
                 seller.save();
 
             }else{
@@ -46,12 +52,15 @@ public class App {
             response.redirect("");
             return new ModelAndView(model, "signup.hbs");
         }, new HandlebarsTemplateEngine());
+
+
 //route for viewing the  buyers
-        get("", (request, response) -> {
+        get("/event/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             model.put("buyers", Buyer.all());
-            return new ModelAndView(model, "buyer-view.hbs");
+            return new ModelAndView(model, "events-form.hbs");
         }, new HandlebarsTemplateEngine());
+
 //route for creating events
         post("/create/events", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -65,9 +74,10 @@ public class App {
             Event event = new Event( Buyer_id,title,location,price,host,imageUrl,description);
             event.save();
             response.redirect("/view/events");
-            return new ModelAndView(model, "eventForm.hbs");
+            return new ModelAndView(model, "events-form.hbs");
         }, new HandlebarsTemplateEngine());
-//route for displaying the events
+
+         //route for displaying the events
         get("/view/Events", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             List<Event> events = Event.all();
@@ -82,7 +92,7 @@ public class App {
             model.put("buyers", buyers);
             model.put("events", events);
             model.put("type", type);
-            return new ModelAndView(model, "eventView.hbs");
+            return new ModelAndView(model, "myEvents.hbs");
         }, new HandlebarsTemplateEngine());
 
 
