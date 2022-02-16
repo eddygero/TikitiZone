@@ -26,6 +26,12 @@ public class App {
             return new ModelAndView(model, "myEvents.hbs");
         }, new HandlebarsTemplateEngine());
 
+
+        //route for my Events Page
+        get("/seller", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "seller.hbs");
+        }, new HandlebarsTemplateEngine());
 //route for getting the form
         get("", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
