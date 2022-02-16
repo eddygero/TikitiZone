@@ -5,42 +5,42 @@
         <div class="login-container d-flex" >
             <div class="login-sub-container d-flex row">
                 <img src="/images/Rectangle13.png" alt="" class="col-6">
-                <div class="form-container col-6">
+                <div class="form-container col-6 bg-dark">
 
                     <form action="/create/buyer/new">
-                    <h2 class="text-center py-2">Tikiti Zone</h2>
+                    <h2 class="text-center py-2 signup-title" >Tikiti Zone</h2>
                          {{#if Person2}}
                           <label for="type">Type</label><br>
                               <div class="form-check form-check-inline">
                                   <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="Buyer"
-                                         onClick="window.location = '/create/seller';" >
-                                     <label class="form-check-label" for="inlineRadio1">Buyer</label>
+                                         onClick="window.location = '/seller';" >
+                                     <label class="form-check-label" for="inlineRadio1" >Buyer</label>
                                     </div>
                              <div class="form-check form-check-inline">
                                                  <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="Seller"
                                                         onClick="window.location = '/create/seller';" checked>
-                                                 <label class="form-check-label" for="inlineRadio2">Seller</label>
+                                                 <label class="form-check-label" for="inlineRadio2" >Seller</label>
                                              </div>
                         <fieldset class="first-fieldset-signUp">
-                            <label for="" class="mb-3">Name</label>
+                            <label for="" class="mb-3" style="color:white";>Name</label>
                             <input type="text rounded" required>
                         </fieldset>
 
                         <fieldset>
-                            <label for="" class="mb-3">age</label>
+                            <label for="" class="mb-3 text-light">age</label>
                             <input type="text rounded" required>
                         </fieldset>
 
                         <fieldset>
-                            <label for="" class="mb-3">ticket</label>
+                            <label for="" class="mb-3 text-light">ticket</label>
                             <input type="text rounded" required>
                         </fieldset>
                          <fieldset>
-                          <label for="" class="mb-3">location</label>
+                          <label for="" class="mb-3 text-light">location</label>
                          <input type="text rounded" required>
                            </fieldset>
                            <fieldset>
-                            <label for="" class="mb-3">price</label>
+                            <label for="" class="mb-3 text-light">price</label>
                             <input type="text rounded" required>
                             </fieldset>
 
@@ -71,11 +71,13 @@
                                                 <input type="text rounded" required>
                                                  </fieldset>
                                                  {{/if}}
-                                                 <div class="form-group">
-                                                                 <button type="submit" class="btn btn-success btn-lg"> Create </button>
-                                                             </div>
+                                                 <div class="form-group mt-4">
+                                                     <button type="submit" class="btn btn-success btn-lg w-100"> Create </button>
+                                                 </div>
+                    </div>
 
-                                                         </form>
+                    </form>
+
 
 {{/partial}}
 {{>layout.hbs}}
