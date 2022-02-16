@@ -1,5 +1,6 @@
-package models;
-
+import models.Buyer;
+import models.Event;
+import models.Seller;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
@@ -18,6 +19,13 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
+
+//route for my Events Page
+        get("/myEvents", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "myEvents.hbs");
+        }, new HandlebarsTemplateEngine());
+
 //route for getting the form
         get("", (request, response) -> {
             Map<String, Object> model = new HashMap<>();

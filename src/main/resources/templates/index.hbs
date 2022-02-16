@@ -20,17 +20,15 @@
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="/">Events</a>
                         </li>
-
                         <li class="nav-item  mx-3">
                             <a class="nav-link " href="/">Upcoming</a>
-
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Contact Us</a>
+                            <a class="nav-link" href="/myEvents">My Events</a>
                         </li>
                     </ul>
                     <div id="btn-section" class="d-flex">
-                        <a class="nav-link" aria-current="page" href="/">Log In</a>
+
                         <button class="btn" type="button">Sign Up</button>
                     </div>
                 </div>
@@ -53,28 +51,28 @@
 
     <!-- Hero section -->
 
-    <div class="search-section d-flex justify-content-around align-items-center ">
+    <!-- <div class="search-section d-flex justify-content-around align-items-center ">
 
         <div class="date d-flex flex-column">
             <div class="date-icon">
                 <img
-                        src="https://img.icons8.com/external-icongeek26-outline-icongeek26/30/ffffff/external-date-law-and-crime-icongeek26-outline-icongeek26.png" />Date
+                    src="https://img.icons8.com/external-icongeek26-outline-icongeek26/30/ffffff/external-date-law-and-crime-icongeek26-outline-icongeek26.png" />Date
             </div>
             <input type="text" class="line">
         </div>
 
 
-        <div class="location  d-flex flex-column">
-        <div class=" location-icon">
+        <div class="location  d-flex flex-column"">
+            <div class=" location-icon">
             <img src="https://img.icons8.com/dotty/30/ffffff/marker.png" />Location
         </div>
         <input type="text" class="line">
     </div>
 
-    <div class="event d-flex flex-column">
-    <div class=" event-icon">
+    <div class="event d-flex flex-column"">
+            <div class=" event-icon">
         <img
-                src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/30/ffffff/external-event-camping-kiranshastry-lineal-kiranshastry.png" />
+            src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/30/ffffff/external-event-camping-kiranshastry-lineal-kiranshastry.png" />
         Event
     </div>
     <input type="text" class="line">
@@ -84,20 +82,20 @@
         <button id="search" class="btn" type="button">Search</button>
     </div>
 
-    </div>
+    </div> -->
     <!--End of Hero section-->
 
 
     <!-- Upcoming Events -->
     <div class="upcoming">
-        <div class="section-title d-flex align-items-center my-4">
+        <div class="section-title d-flex align-items-center ">
             <h5 class="m-0">Upcoming Events</h5>
             <img class="mx-2" src="https://img.icons8.com/ios-filled/50/000000/right--v1.png" />
         </div>
 
-        <div class="row d-flex justify-content-around">
+        <div class="row d-flex justify-content-around ">
 
-            <div class="col-md-3 d-flex flex-column box-card justify-content-center">
+            <div class="col-md-3 col-sm-9 d-flex flex-column box-card justify-content-center">
                 <div class="d-flex">
                     <div class="date-box d-flex flex-column justify-content-center align-items-center">
                         <p class="day">20</p>
@@ -124,7 +122,7 @@
             </div>
 
 
-            <div class="col-md-3 d-flex flex-column box-card justify-content-center">
+            <div class="col-md-3 col-sm-9 d-flex flex-column box-card justify-content-center">
                 <div class="d-flex">
                     <div class="date-box d-flex flex-column justify-content-center align-items-center">
                         <p class="day">20</p>
@@ -150,7 +148,7 @@
 
             </div>
 
-            <div class="col-md-3 d-flex flex-column box-card justify-content-center">
+            <div class="col-md-3 col-sm-9 d-flex flex-column box-card justify-content-center">
                 <div class="d-flex">
                     <div class="date-box d-flex flex-column justify-content-center align-items-center">
                         <p class="day">20</p>
@@ -194,43 +192,16 @@
         </div>
 
 
-        <div class="row d-flex justify-content-around">
 
-            <div class="col-md-3 ">
-
-                <div class="event-card d-flex flex-column">
-                    <div class="image">
-                        <img height="230"
-                             src="https://images.unsplash.com/photo-1594623930572-300a3011d9ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                             alt="">
-
-                        <div class="price-tag">
-                            Ksh 1000
-                        </div>
-                    </div>
-                    <div class="event-details d-flex justify-content-between  align-items-center px-2">
-
-                        <div class="events-date mt-3 ">
-                            <div class="one">
-                                Feb
-                            </div>
-                            <div class="two">
-                                20
-                            </div>
-                        </div>
-                        <div class="event-info mt-3">
-                            <p class="event-title">The Nairobi Festival 2022</p>
-                            <p class="event-venue">
-                                Ngong RaceCourse
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="row d-flex justify-content-around flex-wrap  justify-content-sm-center align-items-sm-center">
 
 
 
-            <div class="col-md-3 ">
+
+
+
+
+            <div class="col-lg-3 col-md-5 ">
 
                 <div class="event-card d-flex flex-column">
                     <div class="image">
@@ -259,11 +230,16 @@
                             </p>
                         </div>
                     </div>
+
+
+                    <button id="search" class="btn" type="button" data-bs-toggle="modal" data-bs-target="#buyTicket">Buy Ticket</button>
+
+
                 </div>
             </div>
 
 
-            <div class="col-md-3 ">
+            <div class="col-lg-3 col-md-5  ">
 
                 <div class="event-card d-flex flex-column">
                     <div class="image">
@@ -292,11 +268,12 @@
                             </p>
                         </div>
                     </div>
+                    <button id="search" class="btn" type="button" data-bs-toggle="modal" data-bs-target="#buyTicket">Buy Ticket</button>
                 </div>
             </div>
 
 
-            <div class="col-md-3 ">
+            <div class="col-lg-3 col-md-5">
 
                 <div class="event-card d-flex flex-column">
                     <div class="image">
@@ -325,13 +302,12 @@
                             </p>
                         </div>
                     </div>
+                    <button id="search" class="btn" type="button" data-bs-toggle="modal" data-bs-target="#buyTicket">Buy Ticket</button>
                 </div>
             </div>
 
 
-
-
-            <div class="col-md-3 ">
+            <div class="col-lg-3 col-md-5 ">
 
                 <div class="event-card d-flex flex-column">
                     <div class="image">
@@ -360,12 +336,14 @@
                             </p>
                         </div>
                     </div>
+                    <button id="search" class="btn" type="button" data-bs-toggle="modal" data-bs-target="#buyTicket">Buy Ticket</button>
                 </div>
             </div>
 
 
 
-            <div class="col-md-3 ">
+
+            <div class="col-lg-3 col-md-5">
 
                 <div class="event-card d-flex flex-column">
                     <div class="image">
@@ -394,14 +372,13 @@
                             </p>
                         </div>
                     </div>
+                    <button id="search" class="btn" type="button" data-bs-toggle="modal" data-bs-target="#buyTicket">Buy Ticket</button>
                 </div>
             </div>
 
 
 
-
-
-            <div class="col-md-3 ">
+            <div class="col-lg-3 col-md-5 ">
 
                 <div class="event-card d-flex flex-column">
                     <div class="image">
@@ -430,12 +407,15 @@
                             </p>
                         </div>
                     </div>
+                    <button id="search" class="btn" type="button" data-bs-toggle="modal" data-bs-target="#buyTicket">Buy Ticket</button>
                 </div>
             </div>
 
 
 
-            <div class="col-md-3 ">
+
+
+            <div class="col-lg-3 col-md-5">
 
                 <div class="event-card d-flex flex-column">
                     <div class="image">
@@ -464,6 +444,42 @@
                             </p>
                         </div>
                     </div>
+                    <button id="search" class="btn" type="button" data-bs-toggle="modal" data-bs-target="#buyTicket">Buy Ticket</button>
+                </div>
+            </div>
+
+
+
+            <div class="col-lg-3 col-md-5">
+
+                <div class="event-card d-flex flex-column">
+                    <div class="image">
+                        <img height="230"
+                             src="https://images.unsplash.com/photo-1594623930572-300a3011d9ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                             alt="">
+
+                        <div class="price-tag">
+                            Ksh 1000
+                        </div>
+                    </div>
+                    <div class="event-details d-flex justify-content-between  align-items-center px-2">
+
+                        <div class="events-date ">
+                            <div class="one">
+                                Feb
+                            </div>
+                            <div class="two">
+                                20
+                            </div>
+                        </div>
+                        <div class="event-info mt-3">
+                            <p class="event-title">The Nairobi Festival 2022</p>
+                            <p class="event-venue">
+                                Ngong RaceCourse
+                            </p>
+                        </div>
+                    </div>
+                    <button id="search" class="btn" type="button" data-bs-toggle="modal" data-bs-target="#buyTicket">Buy Ticket</button>
                 </div>
             </div>
 
@@ -484,20 +500,52 @@
 
     <!--Start of Pagination section-->
 
-    <div class="pagination d-flex align-items-center my-5 justify-content-center">
+    <!-- <div class="pagination d-flex align-items-center my-5 justify-content-center">
         <img src="https://img.icons8.com/ios-filled/30/000000/long-arrow-left.png"/>
         <p>1</p>
         <p class="current-page">2</p>
         <p>3</p>
         <img src="https://img.icons8.com/ios-filled/30/000000/right--v1.png"/>
 
-    </div>
+    </div> -->
 
     <!-- End of pagination -->
 
+
+
+
+    <!-- Modal box -->
+
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#buyTicket">
+        Launch demo modal
+      </button> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="buyTicket" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        <p>All Rights Reserved  @2022</p>
+        <p>All Rights Reserved @2022</p>
     </footer>
+
+
+
 {{/partial}}
 
 
