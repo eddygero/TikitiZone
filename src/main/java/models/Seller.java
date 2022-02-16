@@ -1,15 +1,20 @@
 package models;
 
-public class Seller  extends Buyer{
-    private String price;
-    private String Location;
-    private  String paymentModels;
+import org.sql2o.Connection;
 
-    public Seller(String name, String age, String ticket, String price, String location, String paymentmodels) {
-        super(name, age, ticket);
+public class Seller extends Buyer {
+    private String price;
+    private String location;
+    private String paymentModels;
+    public static final String Person2 = "seller";
+
+
+    public Seller(String name, String age, String ticket, String type, String price, String location, String paymentModels) {
+        super(name, age, ticket, type);
         this.price = price;
-        Location = location;
-        this.paymentModels = paymentmodels;
+        this.location = location;
+        this.paymentModels = paymentModels;
+        this.type= Person2;
     }
 
     public String getPrice() {
@@ -21,11 +26,11 @@ public class Seller  extends Buyer{
     }
 
     public String getLocation() {
-        return Location;
+        return location;
     }
 
     public void setLocation(String location) {
-        Location = location;
+        this.location = location;
     }
 
     public String getPaymentmodels() {
@@ -35,4 +40,24 @@ public class Seller  extends Buyer{
     public void setPaymentmodels(String paymentModels) {
         this.paymentModels = paymentModels;
     }
+
+    @Override
+    public void save() {
+        if (this.price.equals(null) || this.location.equals(null) || this.paymentModels.equals(null)) {
+            throw new IllegalArgumentException("Fields are required");
+        }
+        try (Connection conn = DB.sql2o.open()) {
+            String sql = "INSERT INTO buyer(name,age,ticket,price,location)VALUES(:name ,:age,:ticket,:price,:location)";
+            this.id = (int) conn.createQuery(sql, true)
+                    .addParameter("name", this.name)
+                    .addParameter("age", this.age)
+                    .addParameter("ticket", this.ticket)
+                    .addParameter("price", this.price)
+                    .addParameter("location", this.location)
+                    .executeUpdate()
+                    .getKey();
+        }
+    }
+
+
 }

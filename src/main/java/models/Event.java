@@ -1,8 +1,11 @@
 package models;
 
 
+import org.sql2o.Connection;
+
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 public class Event {
     private  int id;
@@ -17,13 +20,13 @@ public class Event {
     private String description;
 
     public Event(int buyer_id,  String title, String location, int price, String host, String imageUrl, String description) {
-        Buyer_id = buyer_id;
+        this.Buyer_id = buyer_id;
         this.title = title;
         this.location = location;
         this.eventTime = new Timestamp(date.getTime());;
         this.price = price;
         this.host = host;
-        ImageUrl = imageUrl;
+       this. ImageUrl = imageUrl;
         this.description = description;
     }
 
@@ -99,4 +102,59 @@ public class Event {
     public void setDescription(String description) {
         this.description = description;
     }
+    public void save() {
+        if (this.title.equals(null)||this.location.equals(null)||(this.host.equals(null)||this.ImageUrl.equals(null))){
+            throw new IllegalArgumentException("Fields are required");
+        }
+        try(Connection conn = DB.sql2o.open()){
+            String sql = "INSERT INTO events (title,location,price,host,imageUrl,description,Buyer_id,eventTime)VALUES(:title,:location,:price,:host,:imageUrl,:description, :Buyer_id,:eventTime)";
+            this.id =(int) conn.createQuery(sql,true)
+                    .addParameter("title",this.title)
+                    .addParameter("location",this.location)
+                    .addParameter("price",this.price)
+                    .addParameter("host",this.host)
+                    .addParameter("imageUrl",this.ImageUrl)
+                    .addParameter("description",this.description)
+                    .addParameter("Buyer_id",this.Buyer_id)
+                    .addParameter("eventTime",this.eventTime)
+                    .executeUpdate()
+                    .getKey();
+        }
+        }
+    public static List<Event> all() {
+        try(Connection conn = DB.sql2o.open()){
+            String sql ="SELECT * FROM events";
+            return conn.createQuery(sql)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Event.class);
+        }
+    }
+    public static Event find(int id){
+        try (Connection con=DB.sql2o.open()){
+            String sql= "SELECT * FROM events WHERE id=:id";
+            Event event=  con.createQuery(sql)
+                    .addParameter("id",id)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetchFirst(Event.class);
+            return event;
+        }
+    }
+    public void delete(){
+        try (Connection con=DB.sql2o.open()){
+            String sql="DELETE FROM events WHERE id=:id";
+            con.createQuery(sql)
+                    .addParameter("id",this.id)
+                    .executeUpdate();
+        }
+
+    }
+    public static void deleteAll(){
+        try (Connection con=DB.sql2o.open()){
+            String sql="DELETE FROM events";
+            con.createQuery(sql)
+                    .executeUpdate();
+        }
+    }
+
 }
+
