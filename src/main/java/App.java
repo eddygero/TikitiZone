@@ -37,13 +37,18 @@ public class App {
             String type =request.queryParams("type");
             String name = request.queryParams("name");
             String age = request.queryParams("age");
-            String location =request.queryParams("location");
             String ticket = request.queryParams("ticket");
+            String location = request.queryParams("location");
             String price = request.queryParams("price");
-            String paymentModel = request.queryParams("paymentModel");
-
+            String paymentModels = request.queryParams("paymentModels");
+            model.put("name",name);
+            model.put("age",age);
+            model.put("ticket",ticket);
+            model.put("location",location);
+            model.put("price",price);
+            model.put("paymentModels",paymentModels);
             if (type.equals(Seller.Person2)){
-                Seller seller = new Seller(name, age,ticket,type,location,price,paymentModel);
+                Seller seller = new Seller(name, age,ticket,Seller.Person2,location,price,paymentModels);
                 seller.save();
 
             }else{

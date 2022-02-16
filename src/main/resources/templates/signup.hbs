@@ -3,31 +3,76 @@
             <div class="login-sub-container d-flex row">
                 <img src="images/Rectangle 13.png" alt="" class="col-6">
                 <div class="form-container col-6">
+
+                    <form action="/create/buyer/new">
                     <h2 class="text-center py-2">Tikiti Zone</h2>
-                    <form action="">
-
+                         {{#if Person2}}
+                          <label for="type">Type</label><br>
+                              <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="normal"
+                                         onClick="window.location = '/create/seller';" >
+                                     <label class="form-check-label" for="inlineRadio1">Buyer</label>
+                                    </div>
+                                             <div class="form-check form-check-inline">
+                                                 <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="endangered"
+                                                        onClick="window.location = '/create/seller';" checked>
+                                                 <label class="form-check-label" for="inlineRadio2">Seller</label>
+                                             </div>
                         <fieldset class="first-fieldset-signUp">
-                            <label for="" class="mb-3">Email</label>
-                            <input type="text rounded" required>
-                        </fieldset>
-
-                        <fieldset>
                             <label for="" class="mb-3">Name</label>
                             <input type="text rounded" required>
                         </fieldset>
 
                         <fieldset>
-                            <label for="" class="mb-3">Password</label>
+                            <label for="" class="mb-3">age</label>
                             <input type="text rounded" required>
                         </fieldset>
 
                         <fieldset>
-                            <button class="btn mt-3" type="submit">Sign Up</button>
+                            <label for="" class="mb-3">ticket</label>
+                            <input type="text rounded" required>
                         </fieldset>
-                    </form>
-                </div>
-            </div>
-        </div>
+                         <fieldset>
+                          <label for="" class="mb-3">location</label>
+                         <input type="text rounded" required>
+                           </fieldset>
+                           <fieldset>
+                            <label for="" class="mb-3">price</label>
+                            <input type="text rounded" required>
+                            </fieldset>
+
+                               {{else}}
+                                <div class="form-group">
+                                 <label for="type">Type</label><br>
+                                 <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="buyer"
+                                  onClick="window.location = '/create/buyer';" checked>
+                                   <label class="form-check-label" for="inlineRadio1">Buyer</label>
+                                   </div>
+                                    <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="seller"
+                                    onClick="window.location = '/create/buyer/seller';">
+                                   <label class="form-check-label" for="inlineRadio2">Seller</label>
+                                   </div>
+                                    <fieldset class="first-fieldset-signUp">
+                                      <label for="" class="mb-3">Name</label>
+                                     <input type="text rounded" required>
+                                      </fieldset>
+                                        <fieldset>
+                                       <label for="" class="mb-3">age</label>
+                                           <input type="text rounded" required>
+                                               </fieldset>
+
+                                              <fieldset>
+                                                 <label for="" class="mb-3">ticket</label>
+                                                <input type="text rounded" required>
+                                                 </fieldset>
+                                                 {{/if}}
+                                                 <div class="form-group">
+                                                                 <button type="submit" class="btn btn-success btn-lg"> Create </button>
+                                                             </div>
+
+                                                         </form>
 
 {{/partial}}
 {{>layout.hbs}}
