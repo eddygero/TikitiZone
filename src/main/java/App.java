@@ -14,22 +14,16 @@ import static spark.Spark.*;
 public class App {
     public static void main(String[] args) {
         staticFileLocation("/public");
+
 //route for the homepage
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
-
-//route for my Events Page
-        get("/myEvents", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "myEvents.hbs");
-        }, new HandlebarsTemplateEngine());
-
 //route for getting the form
-        get("", (request, response) -> {
+        get("/create/buyer/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "buyer-form.hbs");
+            return new ModelAndView(model, "signup.hbs");
         }, new HandlebarsTemplateEngine());
         //creates a buyer
         post("/create/Buyer", (request, response) -> {
@@ -58,12 +52,15 @@ public class App {
             response.redirect("");
             return new ModelAndView(model, "signup.hbs");
         }, new HandlebarsTemplateEngine());
+
+
 //route for viewing the  buyers
-        get("", (request, response) -> {
+        get("/event/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             model.put("buyers", Buyer.all());
-            return new ModelAndView(model, "buyer-view.hbs");
+            return new ModelAndView(model, "events-form.hbs");
         }, new HandlebarsTemplateEngine());
+
 //route for creating events
         post("/create/events", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -77,9 +74,10 @@ public class App {
             Event event = new Event( Buyer_id,title,location,price,host,imageUrl,description);
             event.save();
             response.redirect("/view/events");
-            return new ModelAndView(model, "eventForm.hbs");
+            return new ModelAndView(model, "events-form.hbs");
         }, new HandlebarsTemplateEngine());
-//route for displaying the events
+
+         //route for displaying the events
         get("/view/Events", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             List<Event> events = Event.all();
@@ -94,7 +92,7 @@ public class App {
             model.put("buyers", buyers);
             model.put("events", events);
             model.put("type", type);
-            return new ModelAndView(model, "eventView.hbs");
+            return new ModelAndView(model, "myEvents.hbs");
         }, new HandlebarsTemplateEngine());
 
 
