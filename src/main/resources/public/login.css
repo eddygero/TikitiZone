@@ -11,12 +11,16 @@ box-sizing: border-box;
  align-items: center;
  background-color: #D4CBE6;
 }
+.login-sub-container{
+ width: 75%;
+ }
 
 .form-container{
  background-color: #fff;
  transform: translateX(-12px);
 }
 fieldset{
+color:white;
  display: flex;
  flex-direction: column;
  padding-left: 3px;
@@ -24,8 +28,14 @@ fieldset{
 .first-fieldset{
  margin-top: 80px;
 }
+.form-check-label{
+color:white;
+}
 .first-fieldset-signUp{
  margin-top: 0px;
+}
+.signup-title h2{
+color:white;
 }
 input{
  border:2px solid #7737F7;

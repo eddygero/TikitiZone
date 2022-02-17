@@ -1,0 +1,163 @@
+{{#partial "title" }}
+    Event Organiser
+{{/partial}}
+
+
+
+{{#partial "content" }}
+    <header>
+        <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="https://img.icons8.com/wired/64/000000/two-tickets.png" />
+                    Tikiti Zone</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto  mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/">Events</a>
+                        </li>
+                        <li class="nav-item  mx-3">
+                            <a class="nav-link " href="/">Upcoming</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/event.html">My Events</a>
+                        </li>
+                    </ul>
+                    <div id="btn-section" class="d-flex">
+
+                        <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#createEvent">Create Event</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Banner section -->
+
+        <div class="banner">
+
+        </div>
+        <!-- End of banner section -->
+
+
+
+    </header>
+
+
+    <div class="allEvents-seller">
+        <div class="section-title d-flex align-items-center ">
+            <h5 class="m-0">My Events</h5>
+            <img class="mx-2" src="https://img.icons8.com/ios-filled/50/000000/right--v1.png" />
+        </div>
+
+
+
+        <div class="row d-flex justify-content-around flex-wrap  justify-content-sm-center align-items-sm-center">
+
+
+            <div class="col-lg-3 col-md-5 ">
+
+                <div class="event-card d-flex flex-column">
+                    <div class="image">
+                        <img height="230"
+                             src="https://images.unsplash.com/photo-1594623930572-300a3011d9ae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                             alt="">
+
+                        <div class="price-tag">
+                            Ksh 1000
+                        </div>
+                    </div>
+                    <div class="event-details d-flex justify-content-between  align-items-center px-2">
+
+                        <div class="events-date ">
+                            <div class="one">
+                                Feb
+                            </div>
+                            <div class="two">
+                                20
+                            </div>
+                        </div>
+                        <div class="event-info mt-3">
+                            <p class="event-title">The Nairobi Festival 2022</p>
+                            <p class="event-venue">
+                                Ngong RaceCourse
+                            </p>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="modal fade" id="createEvent" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Title</label>
+                            <input type="text" class="form-control" name="title" id="inputEmail4">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Location</label>
+                            <input type="age" name="location" class="form-control" id="inputPassword4">
+                        </div>
+
+                        <div class="col-12">
+                            <label for="inputAddress" class="form-label">Image Url</label>
+                            <input type="text" class="form-control" id="inputAddress">
+                        </div>
+
+                        <div class="col-12">
+                            <label for="inputAddress" class="form-label">Description</label>
+                            <textarea class="form-control" name="description" id="" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputState" class="form-label">Payment Method</label>
+                            <select id="inputState" class="form-select">
+                                <option selected>Choose...</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+
+
+
+                        <div class="col-md-4">
+                            <label for="inputZip" class="form-label">Price</label>
+                            <input type="number" class="form-control" id="inputZip">
+                        </div>
+
+                        <div class="col-12">
+                            <button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Create Event</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <p>All Rights Reserved @2022</p>
+    </footer>
+
+
+{{/partial}}
+
+{{> layout.hbs}}
