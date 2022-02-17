@@ -1,0 +1,53 @@
+{{#partial "content"}}
+<div class="p-5 head">
+    <h1 class="text-center"> {{events.title}}</h1>
+</div>
+
+<div class="container row mt-5 pt-5">
+    <div class="col-md-6">
+        <img src="{{events.imageUrl}}"alt="event image" height="450" width="450">
+    </div>
+    <div class="col-md-6 cont-1">
+        <h4>{{events.host}} presents {{events.title}}</h4>
+        <h4>Ticket price : Ksh. {{events.price}}</h4>
+        <h6>Description</h6>
+        <p class="text-secondary">{{events.description}}</p>
+        <a class="btn btn-danger btn-sm" href="/events/{{events.id}}/delete" ><i class="fas fa-trash-alt"></i> Delete</a>
+
+    </div>
+
+    <div class="time pt-3 mt-5">
+        <h5>TIME</h5>
+        <p class="text-secondary">{{events.eventTime}}</p>
+    </div>
+</div>
+<hr>
+
+<h2 class="text-info text-center">Enter your details</h2>
+<div class="container-fluid form-event bg-light">
+    <form action="/events/{{events.id}}/user/ticket" method="post" class="form p-4">
+        <label for ="name" class="form-label">Enter name:</label>
+        <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Input your name..." required>
+
+        <label for="phone number" class="form-label">Enter phone number</label>
+        <input type="text" class="form-control form-control-lg" id="phoneNumber" name="phoneNumber" placeholder="Input your phonenumber..." required>
+
+        <label for="ticket" class="form-label">Ticket</label>
+        <select name="ticket" id="ticket" class="p-2">
+            <option>VIP </option>
+            <option>REGULAR</option>
+        </select>
+
+        <label for="event">Event</label>
+        <input type="text" class="form-control form-control-lg" id="event" name="event" value="{{events.title}}" disabled>
+
+        <div>
+            <button type="submit" class="btn btn-outline-info">Buy Ticket</button>
+        </div>
+    </form>
+</div>
+
+{{/partial}}
+
+{{> layout.hbs}}
+
