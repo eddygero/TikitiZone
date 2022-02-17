@@ -13,12 +13,12 @@
                           <label for="type">Type</label><br>
                               <div class="form-check form-check-inline">
                                   <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="Buyer"
-                                         onClick="window.location = '/seller';" >
+                                         onClick="window.location = '/create/buyer/new';" >
                                      <label class="form-check-label" for="inlineRadio1" >Buyer</label>
                                     </div>
                              <div class="form-check form-check-inline">
                                                  <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="Seller"
-                                                        onClick="window.location = '/create/seller';" checked>
+                                                        onClick="window.location = '/create/buyer/seller';" checked>
                                                  <label class="form-check-label" for="inlineRadio2" >Seller</label>
                                              </div>
                         <fieldset class="first-fieldset-signUp">
@@ -40,16 +40,31 @@
                          <input type="text rounded" required>
                            </fieldset>
                            <fieldset>
-                            <label for="" class="mb-3 text-light">price</label>
-                            <input type="text rounded" required>
-                            </fieldset>
+                           <label for="" class="mb-3 text-light">price</label>
+                           <input type="text rounded" required>
+                           <div class="form-group">
+                                              <div class="input-group mb-3">
+                                                  <div class="input-group-prepend">
+                                                      <label class="input-group-text" for="payment">PaymentModels</label>
+                                                  </div>
+                                                  <select class="custom-select" id="payment" name="payment">
+                                                      <option selected>Choose...</option>
+                                                      {{#if payment }}
+                                                          {{#each payment as |p|}}
+                                                              <option name="payment" value={{p}}>{{p}}</option>
+                                                          {{/each}}
+                                                      {{/if}}
+                                                  </select>
+                                              </div>
+                                          </div>
+
 
                                {{else}}
                                 <div class="form-group">
                                  <label for="type">Type</label><br>
                                  <div class="form-check form-check-inline">
                                   <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="buyer"
-                                  onClick="window.location = '/create/buyer';" checked>
+                                  onClick="window.location = '/create/buyer/new';" checked>
                                    <label class="form-check-label" for="inlineRadio1">Buyer</label>
                                    </div>
                                     <div class="form-check form-check-inline">

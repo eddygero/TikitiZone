@@ -7,6 +7,9 @@ public class Seller extends Buyer {
     private String location;
     private String paymentModels;
     public static final String Person2 = "seller";
+    public static final String PAYMENT_MPESA="M-pesa paybil 23456";
+    public static final String PAYMENT_EQUITY="Equity a/c 09897667947";
+    public static final String PAYMENT_KCB="KCB  a/c 45536289374";
 
 
     public Seller(String name, String age, String ticket, String type, String price, String location, String paymentModels) {

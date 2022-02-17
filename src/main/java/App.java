@@ -68,7 +68,17 @@ public class App {
             return new ModelAndView(model, "signup.hbs");
         }, new HandlebarsTemplateEngine());
 
-
+        get("/create/buyer/seller",(request, response) -> {;
+        Map<String, Object> model = new HashMap<>();
+        List<String> payment = new ArrayList<>();
+        payment.add(Seller.PAYMENT_EQUITY);
+        payment.add(Seller.PAYMENT_KCB);
+        payment.add(Seller.PAYMENT_MPESA);
+        model.put("payment", payment);
+        String type ="Person2";
+        model.put("Person2",type);
+        return new ModelAndView(model, "signup.hbs");
+    }, new HandlebarsTemplateEngine());
 //route for viewing the  buyers
         get("/event/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
