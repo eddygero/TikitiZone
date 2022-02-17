@@ -1,0 +1,26 @@
+{{#partial "content"}}
+    <div class="new-event mt-5">
+        <form action="/events/new" method="post">
+            <label for ="title">Title</label>
+            <input type="text" class="form-control form-control-lg" id="title" name="title" placeholder="Input Name of Event..." required>
+            <label for="location">Location</label>
+            <input type="text" class="form-control form-control-lg" id="location" name="location" placeholder="Input location..." required>
+            <label for="price">Price</label>
+            <input type="text" class="form-control form-control-lg" id="price" name="price" placeholder="Input Price..." required>
+            <label for="host">Host</label>
+            <input type="text" class="form-control form-control-lg" id="host" name="host" placeholder="Input host..." required>
+            <label for="time">time</label>
+            <input type="text" class="form-control form-control-lg" id="time" name="time" placeholder="Input time..." required>
+            <label for="time">image Url</label>
+            <input type="text" class="form-control form-control-lg" id="imageUrl" name="imageUrl" placeholder="example: https://tomorrowland.site/images/martin" required>
+            <label for="description">Description</label>
+            <textarea type="text" class="form-control form-control-lg" id="description" name="description" placeholder="Input description..." required></textarea>
+            <!--        add an image url here -->
+            <div>
+                <button type="submit" class="btn btn-outline-info m-4">save event</button>
+            </div>
+        </form>
+    </div>
+
+{{/partial}}
+{{> layout.hbs}}

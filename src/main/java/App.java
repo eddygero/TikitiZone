@@ -1,10 +1,12 @@
-import models.Buyer;
+import dao.Sql2oEventDao;
+import dao.Sql2oUserDao;
+import models.DB;
 import models.Event;
-import models.Seller;
+import models.User;
+import org.sql2o.Connection;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,112 +17,83 @@ public class App {
     public static void main(String[] args) {
         staticFileLocation("/public");
 
-//route for the homepage
+        Sql2oEventDao eventDao = new Sql2oEventDao(DB.sql2o);
+        Sql2oUserDao userDao = new Sql2oUserDao(DB.sql2o);
+        Connection conn = DB.sql2o.open();
+
         get("/", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
+            Map<String, Object> model = new HashMap<String, Object>();
+            List<Event> allEvents = eventDao.getAll();
+            model.put("events", allEvents);
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
-
-//route for my Events Page
-        get("/myEvents", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "myEvents.hbs");
+        //form to post Event
+        get("/events/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            return new ModelAndView(model, "eventform.hbs");
         }, new HandlebarsTemplateEngine());
 
-
-        //route for my Events Page
-        get("/seller", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "seller.hbs");
-        }, new HandlebarsTemplateEngine());
-
-//route for getting the form
-        get("/create/buyer/new", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "signup.hbs");
-        }, new HandlebarsTemplateEngine());
-        //creates a buyer
-        post("/create/Buyer", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            String type =request.queryParams("type");
-            String name = request.queryParams("name");
-            String age = request.queryParams("age");
-            String ticket = request.queryParams("ticket");
-            String location = request.queryParams("location");
-            String price = request.queryParams("price");
-            String paymentModels = request.queryParams("paymentModels");
-            model.put("name",name);
-            model.put("age",age);
-            model.put("ticket",ticket);
-            model.put("location",location);
-            model.put("price",price);
-            model.put("paymentModels",paymentModels);
-            if (type.equals(Seller.Person2)){
-                Seller seller = new Seller(name, age,ticket,Seller.Person2,location,price,paymentModels);
-                seller.save();
-
-            }else{
-                Buyer buyer = new Buyer(name, age, ticket,type);
-                buyer.save();
-            }
-            response.redirect("");
-            return new ModelAndView(model, "signup.hbs");
-        }, new HandlebarsTemplateEngine());
-
-        get("/create/buyer/seller",(request, response) -> {;
-        Map<String, Object> model = new HashMap<>();
-        List<String> payment = new ArrayList<>();
-        payment.add(Seller.PAYMENT_EQUITY);
-        payment.add(Seller.PAYMENT_KCB);
-        payment.add(Seller.PAYMENT_MPESA);
-        model.put("payment", payment);
-        String type ="Person2";
-        model.put("Person2",type);
-        return new ModelAndView(model, "signup.hbs");
-    }, new HandlebarsTemplateEngine());
-//route for viewing the  buyers
-        get("/event/new", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            model.put("buyers", Buyer.all());
-            return new ModelAndView(model, "events-form.hbs");
-        }, new HandlebarsTemplateEngine());
-
-//route for creating events
-        post("/create/events", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            int Buyer_id = Integer.parseInt(request.queryParams("location"));
+        //process event form
+        post("/events/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
             String title = request.queryParams("title");
             String location = request.queryParams("location");
-            int price =Integer.parseInt(request.queryParams("price"));
-            String imageUrl = request.queryParams("imageUrl");
+            int price = Integer.parseInt(request.queryParams("price"));
+            String time = request.queryParams("time");
             String host = request.queryParams("host");
+            String imageUrl = request.queryParams("imageUrl");
             String description = request.queryParams("description");
-            Event event = new Event( Buyer_id,title,location,price,host,imageUrl,description);
-            event.save();
-            response.redirect("/view/events");
-            return new ModelAndView(model, "events-form.hbs");
+            Event event = new Event(title, location, time, price, host,imageUrl,description);
+            eventDao.add(event);
+            model.put("events", event);
+
+            return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
-         //route for displaying the events
-        get("/view/Events", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            List<Event> events = Event.all();
-            List<String>buyers = new ArrayList<>();
-            List<String>type = new ArrayList<>();
-            for (Event event: events){
-                String buyer_name = Buyer.find(event.getBuyer_id()).getName();
-                String buyer_type =Buyer.find(event.getBuyer_id()).getType();
-                buyers.add(buyer_name);
-                type.add(buyer_type);
-            }
-            model.put("buyers", buyers);
-            model.put("events", events);
-            model.put("type", type);
-            return new ModelAndView(model, "myEvents.hbs");
+        // event description
+        get("/events/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            int eventId = Integer.parseInt(request.params("id"));
+            Event foundEvent = eventDao.findById(eventId);
+            model.put("events", foundEvent);
+            return new ModelAndView(model, "eventDetails.hbs");
         }, new HandlebarsTemplateEngine());
 
+        post("/events/:id/user/ticket" , (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String name = request.queryParams("name");
+            String phoneNumber = request.queryParams("phoneNumber");
+            String ticket = request.queryParams("ticket");
+            int eventId = Integer.parseInt(request.params("id"));
+
+            User user = new User(name,phoneNumber,ticket,eventId);
+            userDao.add(user);
+            Event foundEvent = eventDao.findById(eventId);
+            model.put("events",foundEvent);
+            model.put("user",user);
+            return new ModelAndView(model,"success-user.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        get("/events/:id/delete",(request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            int eventId = Integer.parseInt(request.params("id"));
+            Event foundEvent = eventDao.findById(eventId);
+            eventDao.deleteById(foundEvent.getId());
+            return new ModelAndView(model, "success-delete.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //show user details
+        get("/events/:id/user/ticket/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+
+            int userId = Integer.parseInt(request.params("id"));
+            User ticket = userDao.findById(userId);
+            Event found = eventDao.findById(ticket.getEvent_Id());
+            model.put("event",found);
+            model.put("userTicket", ticket);
+            return new ModelAndView(model, "user.hbs");
+        }, new HandlebarsTemplateEngine());
 
     }
-
 }
