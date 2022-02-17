@@ -1,5 +1,11 @@
 {{#partial "content"}}
     <div class="new-event mt-5">
+        <style>
+            input[type=text] {
+                background-color: #3CBC8D;
+                color: black;
+            }
+        </style>
         <form action="/events/new" method="post">
             <label for ="title" class="form-label">Title</label>
             <input type="text" class="form-control form-control-lg" id="title" name="title" placeholder="Input Name of Event..." required>

@@ -25,6 +25,12 @@
 
 <h2 class="text-info text-center">Enter your details</h2>
 <div class="container-fluid form-event bg-light">
+    <style>
+        input[type=text] {
+            background-color: #3CBC8D;
+            color: black;
+        }
+    </style>
     <form action="/events/{{events.id}}/user/ticket" method="post" class="form p-4">
         <label for ="name" class="form-label">Enter name:</label>
         <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Input your name..." required>
