@@ -1,0 +1,14 @@
+{{#partial "content"}}
+<div class="border border-1 mt-5">
+                <div class="alert alert-info text-center">
+                    <h1>Name:{{userTicket.name}}</h1>
+                    <p>Phone number:{{userTicket.phoneNumber}}</p>
+                    <p>Ticket:{{userTicket.ticket}}</p>
+                    <p>Ticket price : Ksh.{{event.price}}</p>
+                    <p>Event: {{event.title}}</p>
+                </div>
+</div>
+
+{{/partial}}
+
+{{> layout.hbs}}

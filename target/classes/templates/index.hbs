@@ -1,0 +1,38 @@
+{{#partial "content"}}
+    <div class="index container-fluid">
+        <div class="mt-5">
+            <h1 class="mt-5 text-center">Welcome to TikitiZone</h1>
+        </div>
+        <div class="row row-cols-3">
+                   {{#each events}}
+
+
+            <div class="col-md-3 mt-2 mb-2">
+                <div class="card buy-ticket-card">
+                    <img src="{{imageUrl}}" alt="poster" >
+                    <div>
+                        <h2 class="text-center" style="background-color:#F7F7F7;">{{title}}</h2>
+                        <table class=" py-2 px-1" style="width:100%">
+                            <tr>
+                                <th class="p-2">Location</th>
+                                <th class="p-2">Starting at</th>
+                                <th class="p-2">Hosted by</th>
+                            </tr>
+
+                            <tr>
+                                <td class="p-2">{{location}}</td>
+                                <td class="p-2">{{eventTime}}</td>
+                                <td class="p-2">{{host}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <a class="btn btn-info" href="/events/{{id}}">Buy Ticket</a>
+                </div>
+            </div>
+        {{/each }}
+
+        </div>
+    </div>
+
+{{/partial}}
+{{> layout.hbs}}
