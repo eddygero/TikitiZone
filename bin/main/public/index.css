@@ -60,7 +60,7 @@ header {
   width: 70%;
   bottom: 100px;
   right: 300px;
-  height: 130px;
+  height: 110px;
   margin: auto;
   background-color: #0c0035;
   color: #fff;
@@ -83,7 +83,6 @@ header {
   border: none;
   color: #fff;
   outline: none;
-  border-radius: 0px;
   border-bottom: 2px #7737f7 solid;
 }
 #search {
@@ -157,13 +156,20 @@ header {
 
 
 }
+.event-card  .btn {
 
+  margin-top: 10px;
+  margin-left: 23%;
+  background-color: #bea6f0;
+  color: #0c0035;
+
+}
 
 
 .event-card:hover{
   -webkit-transform: scale(0.8);
   -ms-transform: scale(0.8);
-  transform: scale(0.8);
+  transform: scale(0.9);
   transition: 1s ease;
   }
 .image {
@@ -180,9 +186,9 @@ header {
   padding: 7px;
   font-size: 14px;
   font-weight: bold;
-  background-color: #7737f7;
+  background-color: #bea6f0;
   border-radius: 5px;
-  color: #fff;
+  color: #0c0035;
   top: 20px;
   left: 10px;
 }
@@ -192,7 +198,6 @@ header {
   font-size: 20px;
   font-weight: 600;
   margin-top: 10px;
-  margin-left: 10px;
 
 
 
@@ -202,8 +207,6 @@ header {
 .events-date .two {
   font-size: 18px;
   margin-top: 10px;
-  margin-left: 10px;
-
 
 }
 
@@ -216,6 +219,8 @@ header {
   font-size: 16px;
   margin-top: 10px;
 }
+
+
 
 
 
@@ -242,3 +247,7 @@ footer {
   text-align: center;
   color: #fff;
 }
+
+
+
+

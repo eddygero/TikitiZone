@@ -1,2 +1,2 @@
-DROP DATABASE tikitiZone;
-DROP DATABASE tikitiZone_test;
+DROP DATABASE tikitizone;
+DROP DATABASE tikitizone_test;
